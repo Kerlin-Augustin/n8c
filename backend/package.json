@@ -1,0 +1,14 @@
+{
+  "name": "n8c_backend",
+  "version": "1.0.0",
+  "description": "This is the main backend funtionality for the N8C webapp.",
+  "main": "server.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
