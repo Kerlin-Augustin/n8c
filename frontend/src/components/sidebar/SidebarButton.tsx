@@ -2,7 +2,7 @@ interface SidebarButtonProps {
   buttonText: string
 }
 
-function SidebarButton({buttonText}: SidebarButtonProps) {
+const SidebarButton = ({buttonText}: SidebarButtonProps) => {
 
   const style: {[key:string] : React.CSSProperties} = {
     homeButton: {
