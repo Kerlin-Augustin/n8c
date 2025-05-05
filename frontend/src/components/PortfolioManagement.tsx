@@ -8,9 +8,9 @@ const PortfolioManagement = () => {
   const handleSubmit = (e: any) => {
     e.preventDefault()
     axios
-      .get('/api/company')
+      .get('api/company')
       .then(response => {
-        console.log(response)
+        console.log(response.data)
       })
 
     // get all of the contracts from the database and compare it to the search Query

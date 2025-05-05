@@ -36,7 +36,6 @@ const Company = mongoose.model('Company', companySchema)
 app.get('/api/company', async (req, res) => {
   try {
     const companies = await Company.find({});
-    console.log('sssss')
     res.json(companies);
   } catch (err: any) {
     res.status(500).json({ error: err.message });
