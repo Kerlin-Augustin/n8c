@@ -10,17 +10,19 @@ if (!Mongo_URI) {
 }
 
 // Setup MongoClient 
-const client = new MongoClient(Mongo_URI);
+// const client = new MongoClient(Mongo_URI);
 
 // Setup Mongoose
 async function connectToDB(): Promise<void> {
   try {
+    mongoose.set('strictQuery', false);
     await mongoose.connect(Mongo_URI);
     console.log("Connected to MongoDB via Mongoose");
+    console.log("Connected to database:", mongoose.connection.db?.databaseName);
   } catch (e) {
     console.error("MongoDB connection error:", e);
     throw e;
   }
 }
 
-export { client, connectToDB };
+export { connectToDB };

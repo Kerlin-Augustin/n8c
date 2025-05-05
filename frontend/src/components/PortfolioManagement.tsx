@@ -1,17 +1,33 @@
+import axios from "axios"
+import { useState } from 'react'
+
 const PortfolioManagement = () => {
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [searchQuery, setSearchQuery] = useState('')
+
+  const handleSubmit = (e: any) => {
     e.preventDefault()
-    console.log(e)
-  }
+    axios
+      .get('/api/company')
+      .then(response => {
+        console.log(response)
+      })
 
-  const handleChange = () => {
-
+    // get all of the contracts from the database and compare it to the search Query
   }
 
   return (
     <div>
-      <input type='search' onChange={handleChange} placeholder="Search Contracts"/>
+      <form onSubmit={handleSubmit}>
+        <input
+          type='search'
+          onChange={(e) => setSearchQuery(e.target.value)}
+          placeholder="Search Contracts"
+        />
+        <button>
+          Search
+        </button>
+      </form>
     </div>
 
   )
