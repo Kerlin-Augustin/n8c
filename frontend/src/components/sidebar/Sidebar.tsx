@@ -3,11 +3,16 @@ import SidebarButton from "./SidebarButton"
 const Sidebar = () => {
 
   const tabs = [
-    <SidebarButton buttonText="Loan Review" />,
-    <SidebarButton buttonText="Covenant Testing" />,
-    <SidebarButton buttonText="Loan Modification" />,
+    <SidebarButton buttonText="Prospecting" />,
+    <SidebarButton buttonText="Screening" />,
+    <SidebarButton buttonText="Modeling" />,
+    <SidebarButton buttonText="Structure" />,
+    <SidebarButton buttonText="Concept" />,
+    <SidebarButton buttonText="Term Sheet" />,
+    <SidebarButton buttonText="Credit Memo" />,
+    <SidebarButton buttonText="Loan Docs" />,
     <SidebarButton buttonText="Portfolio Review" />,
-    <SidebarButton buttonText="Stress Testing" />]
+    <SidebarButton buttonText="Portfolio Analysis" />,]
 
   const allTabs = tabs.map((tab, index) => {
     return (
