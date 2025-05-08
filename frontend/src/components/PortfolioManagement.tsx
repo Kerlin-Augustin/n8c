@@ -8,7 +8,7 @@ const PortfolioManagement = () => {
   const handleSubmit = (e: any) => {
     e.preventDefault()
     axios
-      .get('api/company')
+      .get('api/userCompany')
       .then(response => {
         console.log(response.data)
       })
