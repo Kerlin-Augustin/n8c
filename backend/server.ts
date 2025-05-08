@@ -16,8 +16,8 @@ connectToDB()
 
 // Create routes after connectDB
 
-const companySchema = new mongoose.Schema({
-  company: { type: String, required: true },
+const userCompanySchema = new mongoose.Schema({
+  userCompanyName: { type: String, required: true },
   users: [
     {
       name: { type: String, required: true },
@@ -31,12 +31,12 @@ const companySchema = new mongoose.Schema({
   ]
 });
 
-const Company = mongoose.model('Company', companySchema)
+const UserCompany = mongoose.model('UserCompany', userCompanySchema)
 
-app.get('/api/company', async (req, res) => {
+app.get('/api/userCompany', async (req, res) => {
   try {
-    const companies = await Company.find({});
-    res.json(companies);
+    const userCompanies = await UserCompany.find({});
+    res.json(userCompanies);
   } catch (err: any) {
     res.status(500).json({ error: err.message });
   }
