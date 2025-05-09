@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import cors from "cors";
 import { connectToDB } from "./database/config/db.ts";
 import mongoose from "mongoose";
+import uploadRoute from './routes/upload.ts'
 
 dotenv.config()
 
@@ -11,6 +12,7 @@ const PORT = process.env.PORT || 3000
 
 app.use(cors());
 app.use(express.json());
+app.use('/api', uploadRoute)
 
 connectToDB()
 
