@@ -4,6 +4,7 @@ import axios from 'axios'
 const SearchQuery = () => {
 
   const [searchQuery, setSearchQuery] = useState('')
+  const [queriedContracts, setQueriedContracts] = useState<React.ReactNode[]>([])
 
   const style: { [key: string]: React.CSSProperties } = {
     queryContainer: {
@@ -16,20 +17,34 @@ const SearchQuery = () => {
   }
 
   useEffect(() => {
+
+    const currentQuery = searchQuery
+
     const timeout = setTimeout(() => {
-      if (searchQuery) {
+      if (currentQuery) {
         axios
           .get('/api/userCompany')
           .then(res => {
-            console.log(searchQuery)
-            if (searchQuery.toLowerCase() === res.data[0].companyName.toLowerCase()) {
-              console.log(res.data[0]._id)
+            const contractsFor10KFiling = res.data.map((contracts: any, index: number) => {
+              return
+            })
+            if (currentQuery.toLowerCase() === res.data[0].companyName.toLowerCase()) {
+              // console.log(res.data)
+              setQueriedContracts(res.data)
+            } else {
+              setQueriedContracts([])
             }
           })
+      } else {
+        setQueriedContracts([])
       }
     }, 300)
     return () => clearTimeout(timeout)
   }, [searchQuery])
+
+  useEffect(() => {
+    console.log('contracts', queriedContracts)
+  },[queriedContracts])
 
   const handleChange = (e: any) => {
     setSearchQuery(e.target.value)
@@ -42,7 +57,12 @@ const SearchQuery = () => {
         type='search'
         style={style.queryInput}
         onChange={handleChange}
+        placeholder="Search for contracts..."
       />
+      {queriedContracts?.length > 0 &&
+        <div>
+          <h2>hello</h2>
+        </div>}
     </div>
   )
 }
