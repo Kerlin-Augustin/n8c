@@ -25,11 +25,12 @@ const SearchQuery = () => {
         axios
           .get('/api/userCompany')
           .then(res => {
+
             const contractsFor10KFiling = res.data.map((contracts: any, index: number) => {
               return
             })
+
             if (currentQuery.toLowerCase() === res.data[0].companyName.toLowerCase()) {
-              // console.log(res.data)
               setQueriedContracts(res.data)
             } else {
               setQueriedContracts([])
@@ -41,10 +42,6 @@ const SearchQuery = () => {
     }, 300)
     return () => clearTimeout(timeout)
   }, [searchQuery])
-
-  useEffect(() => {
-    console.log('contracts', queriedContracts)
-  },[queriedContracts])
 
   const handleChange = (e: any) => {
     setSearchQuery(e.target.value)
