@@ -1,4 +1,4 @@
-import PortfolioManagement from "./components/PortfolioManagement"
+// import PortfolioManagement from "./components/PortfolioManagement"
 import SearchQuery from "./components/searchquery/SearchQuery"
 import Sidebar from "./components/sidebar/Sidebar"
 

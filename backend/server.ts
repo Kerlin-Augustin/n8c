@@ -1,19 +1,21 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
-import { connectToDB } from "./database/config/db.ts";
 import mongoose from "mongoose";
-import uploadRoute from './routes/upload.ts'
+import uploadRoute from './routes/upload.js'
+import { connectToDB } from "./config/mongoDatabase.js";
 
 dotenv.config()
 
 const app = express()
 const PORT = process.env.PORT || 3000
 
+// Middleware
 app.use(cors());
 app.use(express.json());
 app.use('/api', uploadRoute)
 
+// connect to mongoDB
 connectToDB()
 
 // Create routes after connectDB

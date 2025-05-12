@@ -6,7 +6,7 @@
   "main": "server.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon --watch backend --ext ts,json --exec ts-node server.ts"
+    "dev": "nodemon --watch server --ext ts --exec 'TSX_TSCONFIG=tsconfig.json tsx server.ts'"
   },
   "author": "",
   "license": "ISC",
@@ -25,6 +25,8 @@
     "@types/express": "^5.0.1",
     "nodemon": "^3.1.10",
     "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
+    "tsx": "^4.19.4",
     "typescript": "^5.8.3"
   }
 }

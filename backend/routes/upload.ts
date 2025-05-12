@@ -1,7 +1,7 @@
 import express from "express";
 import { PutObjectCommand } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
-import { s3 } from "../aws/s3Client";
+import { s3 } from "../aws/s3Client.js";
 
 const router = express.Router();
 
