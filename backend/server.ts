@@ -1,9 +1,9 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
-import mongoose from "mongoose";
 import uploadRoute from './routes/upload.js'
 import { connectToDB } from "./config/mongoDatabase.js";
+import { UserCompany } from "./database/models/UserCompany.js";
 
 dotenv.config()
 
@@ -17,25 +17,6 @@ app.use('/api', uploadRoute)
 
 // connect to mongoDB
 connectToDB()
-
-// Create routes after connectDB
-
-const userCompanySchema = new mongoose.Schema({
-  userCompanyName: { type: String, required: true },
-  users: [
-    {
-      name: { type: String, required: true },
-      id: { type: String, required: true },
-      industry: { type: String },
-      userJobTitle: { type: String },
-      department: { type: String },
-      totalLoans: { type: [String] },
-      loanTypes: { type: String }
-    }
-  ]
-});
-
-const UserCompany = mongoose.model('UserCompany', userCompanySchema)
 
 app.get('/api/userCompany', async (req, res) => {
   try {
