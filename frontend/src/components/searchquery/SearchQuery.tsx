@@ -26,11 +26,16 @@ const SearchQuery = () => {
           .get('/api/userCompany')
           .then(res => {
 
-            const contractsFor10KFiling = res.data.map((contracts: any, index: number) => {
+            const {userCompanies, users} = res.data
+            const contractsFor10KFiling = res.data.users.map((contracts: any, index: number) => {
               return
             })
 
-            if (currentQuery.toLowerCase() === res.data[0].companyName.toLowerCase()) {
+            console.log(res.data)
+            console.log('users', users)
+            console.log('user companies', userCompanies)
+
+            if (currentQuery.toLowerCase() === res.data[0]?.companyName.toLowerCase()) {
               setQueriedContracts(res.data)
             } else {
               setQueriedContracts([])

@@ -4,6 +4,7 @@ import cors from "cors";
 import uploadRoute from './routes/upload.js'
 import { connectToDB } from "./config/mongoDatabase.js";
 import { UserCompany } from "./database/models/UserCompany.js";
+import { User } from "./database/models/User.js";
 
 dotenv.config()
 
@@ -21,7 +22,14 @@ connectToDB()
 app.get('/api/userCompany', async (req, res) => {
   try {
     const userCompanies = await UserCompany.find({});
-    res.json(userCompanies);
+    const users = await User.find({})
+    res.json({
+      userCompanies: userCompanies,
+      users: users
+    });
+
+    // res.json('hello')
+
   } catch (err: any) {
     res.status(500).json({ error: err.message });
   }

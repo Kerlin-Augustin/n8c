@@ -10,7 +10,8 @@ const userSchema = new mongoose.Schema({
   loanTypes: String,
   root: { type: Boolean, default: false }, // true if head user
   email: String,
-  role: String
+  role: String,
+  employeeOf: String,
 })
 
 export const User = mongoose.model('User', userSchema)
