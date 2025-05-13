@@ -6,7 +6,8 @@
   "main": "server.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon --watch server --ext ts --exec 'TSX_TSCONFIG=tsconfig.json tsx server.ts'"
+    "dev": "nodemon --watch server --ext ts --exec 'TSX_TSCONFIG=tsconfig.json tsx server.ts'",
+    "seed": "npx tsx scripts/seedScript.ts"
   },
   "author": "",
   "license": "ISC",
