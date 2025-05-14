@@ -8,22 +8,22 @@ const seedDatabase = async () => {
   // First part is to create a new company with a head user
 
   const headUser = await User.create({
-    name: 'Deja Johnson',
-    employeeOf: 'Citizens Bank',
-    DoB: new Date('1990-01-07'),
+    name: 'Daquan Williams',
+    employeeOf: 'Citi Bank',
+    DoB: new Date('1990-01-10'),
     industry: 'Technology',
     userJobTitle: 'Investment Banker',
     department: 'Finance',
     totalLoans: ['10k', 'pdf', 'loan from Money Pool'],
     loanTypes: '10k filings',
     root: true,
-    email: 'deja@svb.com',
+    email: 'daquan@citibank.com',
     role: 'admin',
   });
 
   await UserCompany.insertMany([
     {
-      userCompanyName: "Citizens Bank",
+      userCompanyName: "Citi Bank",
       headUser: headUser._id,
       createdAt: new Date().toLocaleDateString(),
       users: [headUser._id],
