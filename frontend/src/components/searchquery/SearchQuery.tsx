@@ -18,31 +18,27 @@ const SearchQuery = () => {
 
   useEffect(() => {
 
-    const currentQuery = searchQuery
-
     const timeout = setTimeout(() => {
-      if (currentQuery) {
-        axios
-          .get('/api/userCompany')
-          .then(res => {
-
-            const {userCompanies, users} = res.data
-            const contractsFor10KFiling = res.data.users.map((contracts: any, index: number) => {
-              return
-            })
-
-            console.log(res.data)
-            console.log('users', users)
-            console.log('user companies', userCompanies)
-
-            if (currentQuery.toLowerCase() === res.data[0]?.companyName.toLowerCase()) {
-              setQueriedContracts(res.data)
-            } else {
-              setQueriedContracts([])
-            }
-          })
+      if (searchQuery) {
+        axios.get('/api/userCompany').then(res => {
+          const { userCompanies, users } = res.data;
+  
+          console.log('users', users);
+          console.log('user companies', userCompanies);
+  
+          const match = users.find(
+            (user: any) =>
+              user.loanTypes?.toLowerCase() === searchQuery.toLowerCase()
+          );
+  
+          if (match) {
+            setQueriedContracts(users);
+          } else {
+            setQueriedContracts([]);
+          }
+        });
       } else {
-        setQueriedContracts([])
+        setQueriedContracts([]);
       }
     }, 300)
     return () => clearTimeout(timeout)
