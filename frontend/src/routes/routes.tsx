@@ -6,6 +6,7 @@ import SearchQuery from "../components/searchquery/SearchQuery";
 import Screening from "../pages/dashboard/screening/Screening";
 import Modeling from "../pages/dashboard/modeling/Modeling";
 import SignupPage from "../pages/auth/signup/SignupPage";
+import LoginPage from "../pages/auth/login/LoginPage";
 
 const routes: RouteObject[] = [
   {path: '/', element: <LandingPage />},
@@ -19,7 +20,8 @@ const routes: RouteObject[] = [
       {path: "modeling", element: <Modeling/>},
     ]
   },
-  {path: '/signup', element: <SignupPage />}
+  {path: '/signup', element: <SignupPage />},
+  {path: '/login', element: <LoginPage />},
 ]
 
 export default routes
