@@ -78,11 +78,13 @@ const Sidebar = () => {
           {allTabs}
         </div>
       </div>
-      <div style={style.profile}>
-        <h3 style={style.profileText}>
-          Sign Out
-        </h3>
-      </div>
+      <NavLink to="/" className="nav-link">
+        <div style={style.profile}>
+          <h3 style={style.profileText}>
+            Sign Out
+          </h3>
+        </div>
+      </NavLink>
     </aside>
   )
 }
