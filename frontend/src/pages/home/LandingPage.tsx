@@ -1,4 +1,8 @@
+import { useState } from 'react';
+
 const LandingPage = () => {
+
+  const [hover, setHover] = useState(false)
 
   const style: { [key: string]: React.CSSProperties } = {
     headerContainer: {
@@ -7,30 +11,33 @@ const LandingPage = () => {
       justifyContent: 'space-between',
       padding: '1em 3em',
       fontSize: '20px',
-      boxShadow: '0 25px 40px rgba(0, 0, 0, 0.1)',
+      boxShadow: '0 10px 40px rgba(0, 0, 0, 0.2)',
       marginBottom: '1em'
     },
     headerLogo: {
       display: 'flex',
       alignItems: 'center',
-      color: 'rgb(37, 123, 227)',
+      color: 'black'
     },
     headerSignup: {
       display: 'flex',
       alignItems: 'center',
-      background: 'rgb(37, 123, 227)',
-      color: "white",
+      color: hover ? 'white' : 'black',
       borderRadius: '5px',
       padding: '.5em',
       cursor: 'pointer',
+      background: hover ? 'linear-gradient(135deg, #2f80ed, #56ccf2)' : '',
     },
     nav: {
       marginRight: '2em',
       fontFamily: '"Martian Mono", sans-serif',
       cursor: 'pointer',
     },
+    main: {
+      backgroundColor: '#eef3f9',
+    },
     mainSection: {
-      background: 'rgb(37, 123, 227)',
+      background: 'linear-gradient(135deg, #2f80ed, #56ccf2)',
       color: 'white',
       textAlign: 'center',
       padding: '10em 0em',
@@ -49,7 +56,6 @@ const LandingPage = () => {
       textAlign: 'center',
       marginTop: '5em',
       fontFamily: '"Martian Mono", sans-serif',
-      color: 'rgb(37, 123, 227)',
     },
     bodySectionH2: {
       margin: '0 10em',
@@ -69,10 +75,41 @@ const LandingPage = () => {
       fontFamily: '"Martian Mono", sans-serif',
     },
     sectionTailDiv: {
-      border: '1px solid rgb(37, 123, 227)',
       borderRadius: '1em',
       boxShadow: '0 25px 40px rgba(0, 0, 0, 0.3)',
       transition: 'box-shadow 0.3s ease',
+      paddingBottom: '5em',
+      textAlign: 'center',
+      background: 'white',
+      border: '1px solid lightgray'
+    },
+    sectionTailH3: {
+      margin: '1em 0',
+      color: 'rgb(37, 123, 227)',
+    },
+    sectionTailP: {
+      margin: '2em 2em',
+      textDecoration: 'underline'
+    },
+    sectionTailSecondP: {
+      margin: '2em 2em',
+    },
+    footer: {
+      background: 'linear-gradient(135deg, #2f80ed, #56ccf2)',
+      padding: '5em 0',
+      color: 'white'
+    },
+    footerSection: {
+      display: 'flex',
+      justifyContent: 'space-around',
+      fontSize: '24px',
+    },
+    footerSectionDiv: {
+      marginRight: '5em',
+    },
+    footerLogo: {
+      marginRight: '35em',
+      marginLeft: '5em',
     }
   }
 
@@ -96,12 +133,16 @@ const LandingPage = () => {
               Contact Us
             </div>
           </div>
-          <div style={style.headerSignup}>
+          <div
+            style={style.headerSignup}
+            onMouseEnter={() => setHover(true)}
+            onMouseLeave={() => setHover(false)}
+          >
             Sign Up
           </div>
         </div>
       </nav>
-      <main>
+      <main style={style.main}>
         <section style={style.mainSection}>
           <div>
             <h1 style={style.mainSectionH1}>
@@ -130,41 +171,51 @@ const LandingPage = () => {
         <section>
           <div style={style.sectionTail}>
             <div style={style.sectionTailDiv}>
-              <h3>
+              <h3 style={style.sectionTailH3}>
                 Analyze Credit Risk Instantly
               </h3>
-              <p>
+              <p style={style.sectionTailP}>
                 Uncover risk factors buried in 10-K filings.
               </p>
-              <p>
+              <p style={style.sectionTailSecondP}>
                 Let AI scan complex financial documents and highlight red flags like debt exposure, liquidity issues, or revenue dips — all in seconds.
               </p>
             </div>
             <div style={style.sectionTailDiv}>
-              <h3>
+              <h3 style={style.sectionTailH3}>
                 Surface Key Insights Automatically
               </h3>
-              <p>
+              <p style={style.sectionTailP}>
                 No more manual digging through pages of data.
               </p>
-              <p>
+              <p style={style.sectionTailSecondP}>
                 Our platform extracts and summarizes the most relevant sections of filings — from cash flow trends to covenant breaches — tailored to what matters to you.
               </p>
             </div>
             <div style={style.sectionTailDiv}>
-              <h3>
+              <h3 style={style.sectionTailH3}>
                 Make Smarter Lending Decisions
               </h3>
-              <p>
-                Make Smarter Lending Decisions
+              <p style={style.sectionTailP}>
+                Back your credit decisions with data, not guesswork.
               </p>
-              <p>
+              <p style={style.sectionTailSecondP}>
                 With enriched insights and smart tagging, you can confidently approve, decline, or flag loan applications based on real financial health.
               </p>
             </div>
           </div>
         </section>
       </main>
+      <footer style={style.footer}>
+        <section style={style.footerSection}>
+          <div style={style.footerLogo}>N8C</div>
+          <section style={style.footerSection}>
+            <div style={style.footerSectionDiv}>About</div>
+            <div style={style.footerSectionDiv}>Contact</div>
+            <div style={style.footerSectionDiv}>Terms and Conditions</div>
+          </section>
+        </section>
+      </footer>
     </>
   )
 }
