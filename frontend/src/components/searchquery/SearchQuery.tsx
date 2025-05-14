@@ -7,6 +7,12 @@ const SearchQuery = () => {
   const [queriedContracts, setQueriedContracts] = useState<React.ReactNode[]>([])
 
   const style: { [key: string]: React.CSSProperties } = {
+    container: {
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      flex: 1,
+    },
     queryContainer: {
       margin: "1em",
     },
@@ -22,15 +28,15 @@ const SearchQuery = () => {
       if (searchQuery) {
         axios.get('/api/userCompany').then(res => {
           const { userCompanies, users } = res.data;
-  
+
           console.log('users', users);
           console.log('user companies', userCompanies);
-  
+
           const match = users.find(
             (user: any) =>
               user.loanTypes?.toLowerCase() === searchQuery.toLowerCase()
           );
-  
+
           if (match) {
             setQueriedContracts(users);
           } else {
@@ -49,18 +55,20 @@ const SearchQuery = () => {
   }
 
   return (
-    <div style={style.queryContainer}>
-      <h3>Find Contracts</h3>
-      <input
-        type='search'
-        style={style.queryInput}
-        onChange={handleChange}
-        placeholder="Search for contracts..."
-      />
-      {queriedContracts?.length > 0 &&
-        <div>
-          <h2>hello</h2>
-        </div>}
+    <div style={style.container}>
+      <div style={style.queryContainer}>
+        <h3>Find Contracts</h3>
+        <input
+          type='search'
+          style={style.queryInput}
+          onChange={handleChange}
+          placeholder="Search for contracts..."
+        />
+        {queriedContracts?.length > 0 &&
+          <div>
+            <h2>hello</h2>
+          </div>}
+      </div>
     </div>
   )
 }

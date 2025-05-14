@@ -1,11 +1,13 @@
+import { NavLink } from "react-router-dom";
 import SidebarButton from "./SidebarButton"
+import "./sidebarNavLinks.css"
 
 const Sidebar = () => {
 
   const tabs = [
-    <SidebarButton buttonText="Prospecting" />,
-    <SidebarButton buttonText="Screening" />,
-    <SidebarButton buttonText="Modeling" />,
+    <NavLink className="nav-link" to="prospecting"><SidebarButton buttonText="Prospecting" /></NavLink>,
+    <NavLink className="nav-link" to="screening"><SidebarButton buttonText="Screening" /></NavLink>,
+    <NavLink className="nav-link" to="modeling"><SidebarButton buttonText="Modeling" /></NavLink>,
     <SidebarButton buttonText="Structure" />,
     <SidebarButton buttonText="Concept" />,
     <SidebarButton buttonText="Term Sheet" />,
@@ -67,9 +69,11 @@ const Sidebar = () => {
   return (
     <aside style={style.sideBarContainer}>
       <div style={style.logoAndTabs}>
-        <h2 style={style.logoText}>
-          N8C
-        </h2>
+        <NavLink className="nav-link" to="">
+          <h2 style={style.logoText}>
+            N8C
+          </h2>
+        </NavLink>
         <div style={style.tabs}>
           {allTabs}
         </div>

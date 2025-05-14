@@ -1,18 +1,11 @@
-// import PortfolioManagement from "./components/PortfolioManagement"
-import SearchQuery from "./components/searchquery/SearchQuery"
-import Sidebar from "./components/sidebar/Sidebar"
+import { useRoutes } from "react-router-dom"
+import routes from "./routes/routes"
 
 function App() {
-
+  const routing = useRoutes(routes)
   return (
     <>
-      <div style={{ display: 'flex', alignItems: 'center' }}>
-        <Sidebar />
-        {/* <PortfolioManagement /> */}
-        <div style={{flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
-          <SearchQuery />
-        </div>
-      </div>
+      {routing}
     </>
   )
 }
