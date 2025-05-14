@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
+import '../../components/sidebar/sidebarNavLinks.css'
 
 const LandingPage = () => {
 
@@ -133,13 +135,15 @@ const LandingPage = () => {
               Contact Us
             </div>
           </div>
-          <div
-            style={style.headerSignup}
-            onMouseEnter={() => setHover(true)}
-            onMouseLeave={() => setHover(false)}
-          >
-            Sign Up
-          </div>
+          <NavLink className='nav-link' to='/signup'>
+            <div
+              style={style.headerSignup}
+              onMouseEnter={() => setHover(true)}
+              onMouseLeave={() => setHover(false)}
+            >
+              Sign Up
+            </div>
+          </NavLink>
         </div>
       </nav>
       <main style={style.main}>
@@ -165,7 +169,11 @@ const LandingPage = () => {
             <p style={style.bodySectionP}>
               Streamline your review process with intelligent tools built for analysts and investors. Quickly identify financial red flags and lending opportunities buried in complex disclosures.
             </p>
-            <button>Get Started With N8C</button>
+            <NavLink to='/signup' className='nav-link'>
+              <button>
+                Get Started With N8C
+              </button>
+            </NavLink>
           </div>
         </section>
         <section>

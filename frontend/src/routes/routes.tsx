@@ -5,6 +5,7 @@ import Prospecting from "../pages/dashboard/prospecting/Prospecting";
 import SearchQuery from "../components/searchquery/SearchQuery";
 import Screening from "../pages/dashboard/screening/Screening";
 import Modeling from "../pages/dashboard/modeling/Modeling";
+import SignupPage from "../pages/auth/signup/SignupPage";
 
 const routes: RouteObject[] = [
   {path: '/', element: <LandingPage />},
@@ -18,6 +19,7 @@ const routes: RouteObject[] = [
       {path: "modeling", element: <Modeling/>},
     ]
   },
+  {path: '/signup', element: <SignupPage />}
 ]
 
 export default routes
