@@ -1,7 +1,8 @@
 import './signupPage.css';
-import '../../../components/sidebar/sidebarNavLinks.css'
+import '../../../defaultNavLinks.css'
 import { NavLink } from 'react-router-dom';
 import { useState } from 'react';
+import axios from 'axios';
 
 const SignupPage = () => {
 
@@ -11,7 +12,8 @@ const SignupPage = () => {
 
   const createAccount = (e: any) => {
     e.preventDefault()
-
+    axios
+      .post('/')
   }
 
   return (

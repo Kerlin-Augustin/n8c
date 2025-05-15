@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import '../../components/sidebar/sidebarNavLinks.css'
+import '../../defaultNavLinks.css'
 
 const LandingPage = () => {
 
