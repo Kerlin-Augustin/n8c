@@ -68,7 +68,7 @@
 .heroForm button {
   width: 80%;
   height: 2.5em;
-  background-color: rgb(37, 123, 227);
+  background-image: linear-gradient(135deg, #2f80ed, #56ccf2);
   color: white;
   border: none;
   border-radius: 0.5em;
