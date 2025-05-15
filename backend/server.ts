@@ -5,6 +5,7 @@ import uploadRoute from './routes/upload.js'
 import { connectToDB } from "./config/mongoDatabase.js";
 import { UserCompany } from "./database/models/UserCompany.js";
 import { User } from "./database/models/User.js";
+import signupRoute from "./routes/auth/signupRoute.js";
 
 dotenv.config()
 
@@ -15,6 +16,7 @@ const PORT = process.env.PORT || 3000
 app.use(cors());
 app.use(express.json());
 app.use('/api', uploadRoute)
+app.use('/api', signupRoute)
 
 // connect to mongoDB
 connectToDB()

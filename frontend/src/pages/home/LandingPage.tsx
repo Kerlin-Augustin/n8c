@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import '../../defaultNavLinks.css'
+import './landingPage.css'
 
 const LandingPage = () => {
 
@@ -128,121 +129,134 @@ const LandingPage = () => {
       borderRadius: '0 .5em .5em 0'
     },
     formInputEmail: {
-    padding: '1em 8px',
-}
+      padding: '1em 8px',
+      borderRadius: '.5em 0 0 .5em',
+      border: '1px solid #fff',
+      background: 'linear-gradient(135deg, #2f80ed, #56ccf2)',
+      color: '#fff',
+    }
   }
 
-return (
-  <>
-    <nav>
-      <div style={style.headerContainer}>
-        <div style={style.headerLogo}>
-          <div style={style.nav}>
-            <h2>
-              N8C
-            </h2>
+  return (
+    <>
+      <nav>
+        <div style={style.headerContainer}>
+          <div style={style.headerLogo}>
+            <div style={style.nav}>
+              <h2>
+                N8C
+              </h2>
+            </div>
+            <div style={style.nav}>
+              Home
+            </div>
+            <div style={style.nav}>
+              About
+            </div>
+            <div style={style.nav}>
+              Contact Us
+            </div>
           </div>
-          <div style={style.nav}>
-            Home
-          </div>
-          <div style={style.nav}>
-            About
-          </div>
-          <div style={style.nav}>
-            Contact Us
-          </div>
-        </div>
-        <NavLink className='nav-link' to='/signup'>
-          <div
-            style={style.headerSignup}
-            onMouseEnter={() => setHover(true)}
-            onMouseLeave={() => setHover(false)}
-          >
-            Sign Up
-          </div>
-        </NavLink>
-      </div>
-    </nav>
-    <main style={style.main}>
-      <section style={style.mainSection}>
-        <div>
-          <h1 style={style.mainSectionH1}>
-            Effortless Credit Solutions Driven by AI Intelligence
-          </h1>
-          <p style={style.mainSectionP}>
-            Transforming Credit Analysis — Extract Key Insights from 10-K Filings to Navigate Risk, Opportunity, and Lending Potential.
-          </p>
-          <form>
-            <input type="email" placeholder="Enter your work email..." style={style.formInputEmail} />
-            <input style={style.demoButton} type='button' value='Get A Demo' />
-          </form>
-        </div>
-      </section>
-      <section style={style.bodySection}>
-        <div>
-          <h2 style={style.bodySectionH2}>
-            All the tools you need to decode filings and make smarter credit decisions.
-          </h2>
-          <p style={style.bodySectionP}>
-            Streamline your review process with intelligent tools built for analysts and investors. Quickly identify financial red flags and lending opportunities buried in complex disclosures.
-          </p>
-          <NavLink to='/signup' className='nav-link'>
-            <button style={style.getStartedButton}>
-              Get Started With N8C
-            </button>
+          <NavLink className='nav-link' to='/signup'>
+            <div
+              style={style.headerSignup}
+              onMouseEnter={() => setHover(true)}
+              onMouseLeave={() => setHover(false)}
+            >
+              Sign Up
+            </div>
           </NavLink>
         </div>
-      </section>
-      <section>
-        <div style={style.sectionTail}>
-          <div style={style.sectionTailDiv}>
-            <h3 style={style.sectionTailH3}>
-              Analyze Credit Risk Instantly
-            </h3>
-            <p style={style.sectionTailP}>
-              Uncover risk factors buried in 10-K filings.
+      </nav>
+      <main style={style.main}>
+        <section style={style.mainSection}>
+          <div>
+            <h1 style={style.mainSectionH1}>
+              Effortless Credit Solutions Driven by AI Intelligence
+            </h1>
+            <p style={style.mainSectionP}>
+              Transforming Credit Analysis — Extract Key Insights from 10-K Filings to Navigate Risk, Opportunity, and Lending Potential.
             </p>
-            <p style={style.sectionTailSecondP}>
-              Let AI scan complex financial documents and highlight red flags like debt exposure, liquidity issues, or revenue dips — all in seconds.
-            </p>
+            <form>
+              <input
+                type="email"
+                placeholder="Enter your work email..."
+                style={style.formInputEmail}
+                className='demo-input'
+              />
+              <input
+                style={style.demoButton}
+                type='button'
+                value='Get A Demo'
+              />
+            </form>
           </div>
-          <div style={style.sectionTailDiv}>
-            <h3 style={style.sectionTailH3}>
-              Surface Key Insights Automatically
-            </h3>
-            <p style={style.sectionTailP}>
-              No more manual digging through pages of data.
-            </p>
-            <p style={style.sectionTailSecondP}>
-              Our platform extracts and summarizes the most relevant sections of filings — from cash flow trends to covenant breaches — tailored to what matters to you.
-            </p>
-          </div>
-          <div style={style.sectionTailDiv}>
-            <h3 style={style.sectionTailH3}>
-              Make Smarter Lending Decisions
-            </h3>
-            <p style={style.sectionTailP}>
-              Back your credit decisions with data, not guesswork.
-            </p>
-            <p style={style.sectionTailSecondP}>
-              With enriched insights and smart tagging, you can confidently approve, decline, or flag loan applications based on real financial health.
-            </p>
-          </div>
-        </div>
-      </section>
-    </main>
-    <footer style={style.footer}>
-      <section style={style.footerSection}>
-        <div style={style.footerLogo}>N8C</div>
-        <section style={style.footerSection}>
-          <div style={style.footerSectionDiv}>About</div>
-          <div style={style.footerSectionDiv}>Contact</div>
-          <div style={style.footerSectionDiv}>Terms and Conditions</div>
         </section>
-      </section>
-    </footer>
-  </>
-)
+        <section style={style.bodySection}>
+          <div>
+            <h2 style={style.bodySectionH2}>
+              All the tools you need to decode filings and make smarter credit decisions.
+            </h2>
+            <p style={style.bodySectionP}>
+              Streamline your review process with intelligent tools built for analysts and investors. Quickly identify financial red flags and lending opportunities buried in complex disclosures.
+            </p>
+            <NavLink to='/signup' className='nav-link'>
+              <button style={style.getStartedButton}>
+                Get Started With N8C
+              </button>
+            </NavLink>
+          </div>
+        </section>
+        <section>
+          <div style={style.sectionTail}>
+            <div style={style.sectionTailDiv}>
+              <h3 style={style.sectionTailH3}>
+                Analyze Credit Risk Instantly
+              </h3>
+              <p style={style.sectionTailP}>
+                Uncover risk factors buried in 10-K filings.
+              </p>
+              <p style={style.sectionTailSecondP}>
+                Let AI scan complex financial documents and highlight red flags like debt exposure, liquidity issues, or revenue dips — all in seconds.
+              </p>
+            </div>
+            <div style={style.sectionTailDiv}>
+              <h3 style={style.sectionTailH3}>
+                Surface Key Insights Automatically
+              </h3>
+              <p style={style.sectionTailP}>
+                No more manual digging through pages of data.
+              </p>
+              <p style={style.sectionTailSecondP}>
+                Our platform extracts and summarizes the most relevant sections of filings — from cash flow trends to covenant breaches — tailored to what matters to you.
+              </p>
+            </div>
+            <div style={style.sectionTailDiv}>
+              <h3 style={style.sectionTailH3}>
+                Make Smarter Lending Decisions
+              </h3>
+              <p style={style.sectionTailP}>
+                Back your credit decisions with data, not guesswork.
+              </p>
+              <p style={style.sectionTailSecondP}>
+                With enriched insights and smart tagging, you can confidently approve, decline, or flag loan applications based on real financial health.
+              </p>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer style={style.footer}>
+        <section style={style.footerSection}>
+          <div style={style.footerLogo}>N8C</div>
+          <section style={style.footerSection}>
+            <div style={style.footerSectionDiv}>About</div>
+            <div style={style.footerSectionDiv}>Contact</div>
+            <div style={style.footerSectionDiv}>Terms and Conditions</div>
+          </section>
+        </section>
+      </footer>
+    </>
+  )
 }
 
 export default LandingPage

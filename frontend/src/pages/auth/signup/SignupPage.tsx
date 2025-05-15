@@ -10,10 +10,21 @@ const SignupPage = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
-  const createAccount = (e: any) => {
+  const createAccount = async (e: any) => {
     e.preventDefault()
-    axios
-      .post('/')
+
+    const signupInformation = {
+      name: name,
+      email: email,
+      password: password
+    }
+
+    try{
+      const res = await axios.post('/api/signup', signupInformation)
+      console.log(res.data)
+    } catch (err) {
+      console.error(err)
+    }
   }
 
   return (
