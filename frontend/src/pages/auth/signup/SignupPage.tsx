@@ -1,10 +1,11 @@
 import './signupPage.css';
 import '../../../defaultNavLinks.css'
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import axios from 'axios';
 
 const SignupPage = () => {
+  const navigate = useNavigate()
 
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
@@ -21,10 +22,14 @@ const SignupPage = () => {
 
     try{
       const res = await axios.post('/api/signup', signupInformation)
-      console.log(res.data)
+      if(res.status === 201){
+        navigate('/dashboard')
+      }
+
     } catch (err) {
       console.error(err)
     }
+    
   }
 
   return (
