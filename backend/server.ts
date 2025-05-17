@@ -1,11 +1,12 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
-import uploadRoute from './routes/upload.js'
+import upload10KFilingToAWSRoute from './routes/upload10KFilingToAWSRoute.js'
+import signupRoute from "./routes/auth/signupRoute.js";
+import user10KFilingRoute from "./routes/user10KFilingRoute.js"
 import { connectToDB } from "./config/mongoDatabase.js";
 import { UserCompany } from "./database/models/UserCompany.js";
 import { User } from "./database/models/User.js";
-import signupRoute from "./routes/auth/signupRoute.js";
 
 dotenv.config()
 
@@ -15,8 +16,9 @@ const PORT = process.env.PORT || 3000
 // Middleware
 app.use(cors());
 app.use(express.json());
-app.use('/api', uploadRoute)
 app.use('/api', signupRoute)
+app.use('/api', upload10KFilingToAWSRoute)
+app.use('/api', user10KFilingRoute)
 
 // connect to mongoDB
 connectToDB()
@@ -29,8 +31,6 @@ app.get('/api/userCompany', async (req, res) => {
       userCompanies: userCompanies,
       users: users
     });
-
-    // res.json('hello')
 
   } catch (err: any) {
     res.status(500).json({ error: err.message });

@@ -1,7 +1,9 @@
+import PortfolioManagement from "../../../components/PortfolioManagement"
+
 const Prospecting = () => {
   return (
     <>
-      Prospecting
+      <PortfolioManagement />
     </>
   )
 }

@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
+  createdAt: { type: Date, default: Date.now },
   department: String,
   DoB: { type: Date },
   email: {type: String, required: true, unique: true, lowercase: true},

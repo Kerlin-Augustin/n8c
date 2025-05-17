@@ -5,69 +5,74 @@ const PortfolioManagement = () => {
 
   const [file, setFile] = useState<File | null>(null)
 
-
-  const handleFileChange = (e: any) => {
-    console.log(e)
-    if (e.target.file) {
+  const handleFileInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
       setFile(e.target.files[0])
+      console.log(e.target.files[0])
     }
   }
 
-  const handleUpload = async () => {
+  const upload10kfilings = async (e: { preventDefault: () => void }) => {
+    e.preventDefault()
+
     if (!file) return
 
     try {
-      // Step 1: Get the pre-signed URL
-      const res = await axios.get("http://localhost:3000/api/generate-presigned-url", {
+      const preSignedRes = await axios.get("/api/generate-presigned-url", {
         params: {
           filename: file.name,
           contentType: file.type,
         },
       });
 
-      const { url } = res.data;
+      const { url, key } = preSignedRes.data;
 
-      // Step 2: Upload the file to S3 using the signed URL
-      const uploadRes = await axios.put(url, file, {
+      const uploadPreSignedRes = await axios.put(url, file, {
         headers: {
           "Content-Type": file.type,
         },
       });
 
-      if (uploadRes.status === 200) {
-        alert("Upload successful!");
-      } else {
-        alert("Upload failed.");
+      if (uploadPreSignedRes.status !== 200) {
+        throw new Error("S3 upload failed");
       }
+
+      const savePreSignedRes = await axios.post("/api/user10KFiling", {
+        filename: file.name,
+        filetype: file.type,
+        filesize: file.size,
+        s3Key: key, // this is the key you generated on backend
+        s3Url: url.split("?")[0], // remove query params if you want permanent URL
+        userId: 123456789, // You should have this from context/auth
+      });
+
+      console.log("Saved to DB:", savePreSignedRes.data);
+      alert("Upload successful!");
 
     } catch (err) {
       console.error("Upload error:", err);
       alert("Something went wrong.");
     }
 
-  }
-  const handleSubmit = (e: any) => {
-    e.preventDefault()
-    axios
-      .get('api/userCompany')
-      .then(response => {
-        console.log(response.data)
-      })
-
     // get all of the contracts from the database and compare it to the search Query
   }
+
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={upload10kfilings}>
+        <label htmlFor='file'>Upload 10K Filings</label>
+        <br />
         <input
           type='file'
-          onChange={handleFileChange}
-          placeholder="Upload Contracts"
+          onChange={handleFileInputChange}
+          accept=".pdf"
+          id="file"
         />
-        <button onClick={handleUpload} disabled={false}>
-          Search
+        <button>
+          Upload PDF
         </button>
       </form>
+      <section></section>
     </div>
 
   )

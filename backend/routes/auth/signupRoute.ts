@@ -1,4 +1,4 @@
-import express, { Response, Request, RequestHandler } from 'express'
+import express, { RequestHandler } from 'express'
 import { signupController } from '../../controller/auth/signupController.js'
 
 const router = express.Router()
