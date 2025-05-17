@@ -10,4 +10,4 @@ const user10KFilingSchema = new mongoose.Schema({
   s3Url: String,
 })
 
-export const User10KFiling = mongoose.model('User10Kfiling', user10KFilingSchema)
+export const User10KFilingModel = mongoose.model('User10Kfiling', user10KFilingSchema)

@@ -1,13 +1,13 @@
 import { connectToDB } from "../config/mongoDatabase.js";
-import { User } from "../database/models/User.model.js";
-import { UserCompany } from "../database/models/UserCompany.model.js";
+import { UserModel } from "../database/models/User.model.js";
+import { UserCompanyModel } from "../database/models/UserCompany.model.js";
 
 const seedDatabase = async () => {
   await connectToDB()
 
   // First part is to create a new company with a head user
 
-  const headUser = await User.create({
+  const headUser = await UserModel.create({
     name: 'Daquan Williams',
     employeeOf: 'Citi Bank',
     DoB: new Date('1990-01-10'),
@@ -21,7 +21,7 @@ const seedDatabase = async () => {
     role: 'admin',
   });
 
-  await UserCompany.insertMany([
+  await UserCompanyModel.insertMany([
     {
       userCompanyName: "Citi Bank",
       headUser: headUser._id,
@@ -30,11 +30,9 @@ const seedDatabase = async () => {
     }
   ])
 
-
-
 /* This is to add newUsers to an already existing company 
 
-  const nonHeadUser = await User.create({
+  const nonHeadUser = await UserModel.create({
     name: 'Alex Alexander Alexandria',
     DoB: new Date('1970-10-15'),
     industry: 'Technology',
@@ -47,7 +45,7 @@ const seedDatabase = async () => {
     role: 'member'
   });
 
-  const company = await UserCompany.findOne({ userCompanyName: "Silicon Valley Bank" })
+  const company = await UserCompanyModel.findOne({ userCompanyName: "Silicon Valley Bank" })
 
   if (company) {
     company.users.push(nonHeadUser._id)

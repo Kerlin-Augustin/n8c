@@ -8,4 +8,4 @@ const userCompanySchema = new mongoose.Schema({
   users: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
 });
 
-export const UserCompany = mongoose.model('UserCompany', userCompanySchema)
+export const UserCompanyModel = mongoose.model('UserCompany', userCompanySchema)

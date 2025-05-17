@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { User10KFiling } from "../database/models/User10KFiling.model.js";
+import { User10KFilingModel } from "../database/models/User10KFiling.model.js";
 
 export const user10KFilingController = async (req: Request, res: Response) => {
   const { filename, filetype, filesize, s3Key, s3Url, userId } = req.body;
@@ -7,7 +7,7 @@ export const user10KFilingController = async (req: Request, res: Response) => {
   const placeholderId = '000000000000000000000000'
 
   try{
-    const metadata = new User10KFiling({
+    const metadata = new User10KFilingModel({
       filename,
       filetype,
       filesize,

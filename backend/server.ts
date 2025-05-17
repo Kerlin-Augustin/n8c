@@ -5,8 +5,8 @@ import upload10KFilingToAWSRoute from './routes/upload10KFilingToAWSRoute.js'
 import signupRoute from "./routes/auth/signupRoute.js";
 import user10KFilingRoute from "./routes/user10KFilingRoute.js"
 import { connectToDB } from "./config/mongoDatabase.js";
-import { UserCompany } from "./database/models/UserCompany.model.js";
-import { User } from "./database/models/User.model.js";
+import { UserCompanyModel } from "./database/models/UserCompany.model.js";
+import { UserModel } from "./database/models/User.model.js";
 
 dotenv.config()
 
@@ -25,8 +25,8 @@ connectToDB()
 
 app.get('/api/userCompany', async (req, res) => {
   try {
-    const userCompanies = await UserCompany.find({});
-    const users = await User.find({})
+    const userCompanies = await UserCompanyModel.find({});
+    const users = await UserModel.find({})
     res.json({
       userCompanies: userCompanies,
       users: users

@@ -16,4 +16,4 @@ const userSchema = new mongoose.Schema({
   userJobTitle: String,
 })
 
-export const User = mongoose.model('User', userSchema)
+export const UserModel = mongoose.model('User', userSchema)
