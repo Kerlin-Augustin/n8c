@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { User10KFiling } from "../database/models/User10KFiling.js";
+import { User10KFiling } from "../database/models/User10KFiling.model.js";
 
 export const user10KFilingController = async (req: Request, res: Response) => {
   const { filename, filetype, filesize, s3Key, s3Url, userId } = req.body;

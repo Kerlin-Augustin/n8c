@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt';
 import { Request, Response } from 'express'
-import { User } from '../../database/models/User.js';
+import { User } from '../../database/models/User.model.js';
 import mongoose from 'mongoose';
 
 export const signupController = async (req: Request, res: Response) => {

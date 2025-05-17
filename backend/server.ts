@@ -5,8 +5,8 @@ import upload10KFilingToAWSRoute from './routes/upload10KFilingToAWSRoute.js'
 import signupRoute from "./routes/auth/signupRoute.js";
 import user10KFilingRoute from "./routes/user10KFilingRoute.js"
 import { connectToDB } from "./config/mongoDatabase.js";
-import { UserCompany } from "./database/models/UserCompany.js";
-import { User } from "./database/models/User.js";
+import { UserCompany } from "./database/models/UserCompany.model.js";
+import { User } from "./database/models/User.model.js";
 
 dotenv.config()
 

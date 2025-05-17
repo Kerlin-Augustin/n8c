@@ -1,6 +1,6 @@
 import { connectToDB } from "../config/mongoDatabase.js";
-import { User } from "../database/models/User.js";
-import { UserCompany } from "../database/models/UserCompany.js";
+import { User } from "../database/models/User.model.js";
+import { UserCompany } from "../database/models/UserCompany.model.js";
 
 const seedDatabase = async () => {
   await connectToDB()
